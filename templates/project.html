@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Project
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col">
+        <h3>{{ project.project }}</h3>
+        <h6>{{ project.description }}</h6>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h4>Looking for sources?</h4>
+            Head on over to "Search" and start searching for articles!
+            <br>
+            <br>
+            <h5><label for="sources">Source List</label></h5>
+            <table id="sources" class="table table-striped table-bordered">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Publisher</th>
+                </tr>
+                {% for source in sources %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ source.articlename }}</td>
+                    <td>{{ source.author }}</td>
+                    <td>{{ source.publisher }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="col">
+        <h4>Ready to write your paper?</h4>
+        1. Authenticate with Google in "Make."<br>
+        2. Choose a document of your choice in "Make."<br>
+        If you have already, then Start Writing below!<br>
+        <br>
+        {% if paper %}
+            <a href="https://docs.google.com/document/d/{{ paper }}" target="_blank" role="button" class="btn btn-info">Start writing!</a>
+        {% endif %}
+        <br><br>
+        <h4>Looking to cite sources?</h4>
+        Go to "Cite" and choose a source and style!<br>
+        Warning: Citations might not be fully accurate due to the limitations of the News searches.
+
+        </div>
+    </div>
+{% endblock %}

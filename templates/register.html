@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" type="email" autofocus class="form-control" name="email" placeholder="Email">
+            <small id="emailHelp" class="form-text text-muted">We won't share it with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+            <small id="emailHelp" class="form-text text-muted">Your password must be 6 to 20 characters, and
+            must contain one number and one capital letter.</small>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+{% endblock %}

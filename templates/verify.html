@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Verified!
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-success" role="alert">
+      You've successfully been verified!
+    </div>
+
+    <form action="/verify", method="post">
+        <button class="btn btn-primary" type="submit">Go back home to log in!</button>
+    </form>
+{% endblock %}

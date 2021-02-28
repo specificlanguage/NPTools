@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            Oops! {{ error_message }}
+        </div>
+    {% endif %}
+
+    <form action="/search" method="post">
+
+        <!-- Query -->
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="query">What do you want to look for?</label>
+                    <br>
+                    <input id="query" class="form-control form-control-lg" type="text" name="query" placeholder="Search...">
+                </div>
+            </div>
+        </div>
+        <!-- Narrowing Search options:
+             Narrow sources TODO LATER -->
+
+        <br>
+
+        <!-- Sorting results-->
+        <div class="form-row">
+            <div class='col'>
+                <h5>Choose how you want to sort results:</h5>
+                <label for="sort">Sort by...</label>
+                <br>
+                <select class="form-control" name="sort" placeholder="" id="sort">
+                    <option>Relevancy</option>
+                    <option>Popularity</option>
+                    <option>Date (sorted by New)</option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <h5>Enter domains you want to only search by or remove (optional):</h5>
+                <small class="form-text text-muted">Separate domains by commas.</small>
+                <br>
+                <label for="source-list">Only search these:</label>
+                <input class="form-control" type="text" id="source-list" name="source-list" placeholder="bbc.co.uk, nytimes.com, eg.">
+                <br>
+                <label for="source-list">Exclude these:</label>
+                <input class="form-control" type="text" name="source-blacklist" placeholder="bbc.co.uk, nytimes.com, eg.">
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Search!</button>
+    </form>
+{% endblock %}

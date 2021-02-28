@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cite Result
+{% endblock %}
+
+{% block main %}
+    <h5>Here's your citation!</h5><br>
+    <h6>Bear in mind that <span class="font-weight bold">not all citations are correct!</span> Copy and paste at your own will.
+    Use CTRL-C or Command-C to copy, and CTRL-V and Command-V to paste.</h6>
+    <br>
+
+    <p>
+        {% if citeformat == "Chicago" %}
+            {{ firstname }} {{ lastname }}, "{{ article.articlename }}," <span class="font-weight italics">{{ article.publisher }}</span>,
+            {{ datepub.month }} {{ datepub.day }}, {{ datepub.year}}, {{ article.url }}.
+        {% endif %}
+
+        {% if citeformat == "MLA-8" %}
+            {{ lastname }}, {{ firstname }}. "{{ article.articlename }}." <span class="font-weight italics">{{ article.publisher }}</span>,
+            {{ datepub.day }} {{ datepub.month }} {{datepub.year}}. <span class="font-weight italics">{{ article.publisher }}</span>, {{ article.url }}.
+        {% endif %}
+
+        {% if citeformat == "APA" %}
+            {{ lastname }}, {{ firstname[0] }}. {{article.articlename}}. <span class="font-weight italics">{{ article.publisher }}</span>.
+            Retrieved from {{ article.url }}
+        {% endif %}
+    </p>
+    <br>
+    <form action="/citeresult" method="post">
+        <button type="submit" class="btn btn-primary">Cite something else!</button>
+    </form>
+{% endblock %}

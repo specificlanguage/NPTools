@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <h3>Welcome, {{ user }}, to NoodlePowerTools!</h3> <br><br>
+
+<form action="/" method="post">
+    <!-- I am so sorry but I need to make a dropdown in order for this to actually work! SO SORRY!! -->
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+               <h5>Choose a project here:</h5>
+                <select class="form-control" name="project_select">
+                    <option>0 - New Project</option>
+                    {% for project in projects %}
+                        <option>{{ loop.index }} - {{ project.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <label for="projects">Here's more info about your projects:</label>
+            <table class="table table-striped" id="projects">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Number of Sources</th>
+                        </tr>
+                </thead>
+                {% for project in projects %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ loop.index }}</td>
+                        <td>{{ project.name }}</td>
+                        <td style="minwidth:400px;">{{ project.description }}</td>
+                        <td>{{ project.numsources }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Go to Project!</button>
+</form>
+
+{% endblock %}

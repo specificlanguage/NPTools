@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Make
+{% endblock %}
+
+{% block main %}
+    <h6>Your document will open in a new tab.</h6>
+    <br>
+
+    <a href="https://docs.google.com/document/d/{{ documentid }}" target="_blank" role="button" class="btn btn-info">Start writing!</a>
+    <br>
+    <form action="/make" method="post">
+        <button class="btn btn-primary">Choose a different document...</button>
+    </form>
+{% endblock %}

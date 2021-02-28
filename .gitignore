@@ -122,3 +122,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+APIkeys.txt
+credentials.json
+passwords.txt
+/.~c9_invoke_bEY51.py
+/finance.db

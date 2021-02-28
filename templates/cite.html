@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cite
+{% endblock %}
+
+{% block main %}
+    <h5>Cite a source!</h5>
+
+    <br>
+
+    <form action="/cite" method="post">
+        <div class="form-row">
+            <div class="col">
+                <label for="sourceselect">Pick a source to cite:</label>
+                <br>
+                <select id="sourceselect" name="sourceselect" class="form-control">
+                    <option selected>Choose a source...</option>
+                    {% for source in sources %}
+                    <option>{{ source.articlename }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+                <label for="citeformat">Pick a format on how to cite it:</label>
+                <br>
+                <select id="citeformat" name="citeformat" class="form-control">
+                    <option selected>Choose a format...</option>
+                    <option>MLA-8</option>
+                    <option>APA</option>
+                    <option>Chicago</option>
+                </select>
+            </div>
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary">Cite it!</button>
+    </form>
+{% endblock %}

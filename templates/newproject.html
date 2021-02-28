@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New Project
+{% endblock %}
+
+
+{% block main %}
+    <form action="/newproject" method="post">
+        {% if welcome %}
+            <div class="alert alert-primary" role="alert">
+              Welcome to NoodlePowerTools! Let's get started with your first project.
+            </div>
+        {% endif %}
+        <br>
+        <h3>New Project</h3>
+        <br>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                <input class="form-control" type="text" name="name" placeholder="Project Name">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                <input class="form-control form-control-lg" type="text" name="description" placeholder="A short description">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create a new project</button>
+    </form>
+{% endblock %}

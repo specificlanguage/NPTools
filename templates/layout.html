@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <!-- meta tags -->
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <!-- Documentation at http://getbootstrap.com/docs/4.0/, alternative themes at https://bootswatch.com/4-alpha/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <link href="/static/styles.css" rel="stylesheet"/>
+        <link href="/static/bootstrap.min.css" rel="stylesheet"/>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="static/filepicker.js"></script>
+
+        <link rel="home" type="static/BestLogo.png" href="/favicon.png/">
+
+        <title>NoodlePowerTools - {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a class="navbar-brand" href="/">
+                <img src="/static/BestLogo.png" width="160" height="80" alt="">
+            </a>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                     <ul class="navbar-nav mr-auto mt-2">
+                        {% if session.project_id | int > 0 and session.user_id%}
+                            <li class="nav-item"><a class="nav-link" href="/project">Project Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" href="/download">Download></a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="/make">Make</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/cite">Cite</a></li>
+                        {% endif %}
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+                {% else %}
+                <ul class="navbar-nav ml-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container-fluid p-5">
+            {% block main %}{% endblock %}
+        </main>
+
+    </body>
+</html>
